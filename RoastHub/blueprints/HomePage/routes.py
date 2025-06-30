@@ -6,9 +6,7 @@ HomePage = Blueprint("HomePage",__name__,template_folder="templates")
 def index():
     return render_template("HomePage/index.html")
 
-@HomePage.route("/demo")
-def demo():
-    return render_template("HomePage/demo.html")
+
 @HomePage.route("/analyze",methods=["POST"])
 def analyze():
     username = request.form["username"]
