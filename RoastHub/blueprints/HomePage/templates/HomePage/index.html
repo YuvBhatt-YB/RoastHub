@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class=" bg-[#F1F2F6] opacity-93 flex flex-col font-Roboto sm:px-4 md:px-8 ld:px-12 xl:px-[100px] ">
+    <div class=" h-[56px] sm:h-[96px]   w-full px-2 sm:px-0 flex items-center">
+        <h1 class=" font-semibold text-xl sm:text-2xl text-fontPrimary">RoastHub</h1>
+    </div>
+    <div class=" px-2 sm:px-4 w-full  sm:rounded-t-[20px] md:rounded-t-[43px] py-10 bg-white shadow-[0px_4px_20px_20px_rgba(234,_233,_233,_0.25)]">
+        <div class="  text-center">
+            <div class=" w-full ">
+                <h1 class=" font-bold text-fontPrimary text-5xl sm:text-8xl">The Github Resume</h1>
+            </div>
+            <div>
+                <h1 class=" font-bold  text-[#7588FD] text-5xl sm:text-8xl">Roaster</h1>
+            </div>
+            <div class="mt-4">
+                <div class=" text-fontPrimary sm:text-xl">
+                    <p>Not sure how your GitHub looks to recruiters or devs ? Enter your GitHub username and 
+                    </p>
+                    <p>
+                        get brutally honest feedback—powered by AI.
+                    </p>
+                </div>
+            </div>
+            <div class="  w-full mt-8">
+                <form action="{{url_for('HomePage.analyze')}}" method="post" onsubmit="showLoader()" class=" flex flex-col sm:flex-row w-full gap-3 sm:gap-5 items-center justify-center">
+                    <div class=" w-full max-w-[607px] h-[50px] border-1 border-[#9CA7BF] rounded-[5px]">
+                        <input type="text" name="username" id="" placeholder="Enter your Github Name ..." class=" w-full h-full text-center text-[#9CA7BF]  ">
+                    </div>
+                    <button type="submit"  class="w-full sm:w-[190px] h-[50px] rounded-[5px] bg-[#7588FD] text-white cursor-pointer flex gap-2 items-center justify-center">
+                        <p id="btnContent">Roast Me</p>
+                    </button>
+
+                </form>
+            </div>
+            <div class="mt-6 sm:mt-12">
+                <div class=" text-fontPrimary opacity-50 text-xl sm:text-3xl">
+                    <p>
+                        Wondering how our AI dishes out your roast and rating?
+                    </p>
+                    <p>
+                        Here's the breakdown:
+                    </p>
+                </div>
+                <div class=" w-full flex flex-col items-center justify-center gap-6 sm:gap-9 mt-6">
+                    <div class=" border-1 border-[#9CA7BF] w-full max-w-[820px] rounded-[10px] p-4 sm:p-8">
+                        <div class="flex  gap-2 sm:gap-5">
+                            <div >
+                                <img width="48" height="48" src="https://img.icons8.com/doodle/48/user.png" alt="user"/>
+                            </div>
+                            <div class=" text-start">
+                                <p class=" text-fontPrimary sm:text-xl">You Enter Your GitHub Username</p>
+                                <p class=" text-fontPrimary opacity-50">Just drop your GitHub handle—no login needed.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" border-1 border-[#9CA7BF] w-full max-w-[820px] rounded-[10px] p-4 sm:p-8">
+                        <div class="flex gap-2 sm:gap-5">
+                            <div >
+                                <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/github.png" alt="github"/>
+                                
+                            </div>
+                            <div class=" text-start ">
+                                <p class=" text-fontPrimary sm:text-xl mt-1 sm:mt-0">We Fetch Your Top 10 Public Repositories</p>
+                                <p class=" text-fontPrimary opacity-50">We use the GitHub API to grab your public repos</p>
+                                <p class=" text-fontPrimary opacity-50">and run them through our custom scoring engine.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" border-1 border-[#9CA7BF] w-full max-w-[820px] rounded-[10px] p-4 sm:p-8">
+                        <div class="flex gap-2 sm:gap-5">
+                            <div >
+                                <img width="70" height="70" src="https://img.icons8.com/color/48/-scoreboard-.png" alt="-scoreboard-" class=" sm:w-[50px] sm:h-[50px]"/>
+                            </div>
+                            <div class=" text-start">
+                                <p class=" text-fontPrimary sm:text-xl mt-2 sm:mt-3">Scoring System</p>
+                                <div class="flex flex-col gap-3.5 mt-3.5">
+                                    <div class="flex gap-3">
+                                        <div>
+                                            <img width="30" height="30" src="https://img.icons8.com/external-soft-fill-juicy-fish/60/external-stars-space-exploration-soft-fill-soft-fill-juicy-fish.png" alt="external-stars-space-exploration-soft-fill-soft-fill-juicy-fish" class=" sm:w-[40px] sm:h-[40px]"/>
+                                        </div>
+                                        <div>
+                                            <p class=" text-fontPrimary sm:text-xl">Stars</p>
+                                            <p class=" text-fontPrimary opacity-50">+10 Points for every Stargazer</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3">
+                                        <div>
+                                            <img width="60" height="60" src="https://img.icons8.com/color-glass/48/personal-video-recorder-menu.png" alt="personal-video-recorder-menu" class="sm:w-[40px] sm:h-[40px]"/>
+                                        </div>
+                                        <div>
+                                            <p class=" text-fontPrimary sm:text-xl">Description Quality</p>
+                                            <p class=" text-fontPrimary opacity-50">More detailed = more points. Empty or vague? Expect deductions.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-3">
+                                        <div>
+                                            <img width="40" height="40" src="https://img.icons8.com/color-glass/48/project-management.png" alt="project-management"/>
+                                        </div>
+                                        <div>
+                                            <p class=" text-fontPrimary sm:text-xl">Project Type</p>
+                                            <p class=" text-fontPrimary opacity-50">Original / Unique projects → +100 points bonus</p>
+                                            <p class=" text-fontPrimary opacity-50">Clones / Tutorial projects → 0 points</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" py-7">
+        <div>
+            <p class=" font-Roboto text-fontPrimary text-center">"© 2025 Yuv Bhatt. All rights reserved." </p>
+        </div>
+    </div>
+</div>
+<script>
+    function showLoader(){
+        document.getElementById("btnContent").innerText = "Roasting..."
+    }
+    window.addEventListener('pageshow', function (event) {
+    document.getElementById("btnContent").innerText = "Roast Me";
+    })
+</script>
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class=" bg-[#F1F2F6] opacity-93 flex flex-col font-Roboto sm:px-4 md:px-8 ld:px-12 xl:px-[100px]  ">
+    <div class=" h-[56px] sm:h-[96px]   w-full px-2 sm:px-0 flex items-center">
+        <h1 class=" font-semibold text-xl sm:text-2xl text-fontPrimary">RoastHub</h1>
+    </div>
+    <div class=" px-2 sm:px-4 w-full  sm:rounded-t-[20px] md:rounded-t-[43px] pt-10 pb-20 bg-white shadow-[0px_4px_20px_20px_rgba(234,_233,_233,_0.25)]">
+        <div class="  w-full flex  items-center justify-center pb-[39px]">
+            <div class=" flex items-center gap-3 sm:gap-9 flex-col lg:flex-row">
+                <div class="w-[150px] h-[150px] rounded-full overflow-hidden bg-gray-400">
+                    <img src="{{ user_data['profilePic'] }}" alt="Profile Picture" class="w-full h-full object-cover">
+                </div>
+                <div class=" text-center lg:text-start">
+                    <p class=" text-2xl text-fontPrimary">{{user_data["name"]}}</p>
+                    <div>
+                        <p class=" text-fontPrimary opacity-80">{{user_data["bio"] or "No Bio"}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" w-full flex justify-center">
+            <div class=" border-2  border-fontPrimary  opacity-10 rounded-full w-[1200px] "></div>
+        </div>
+        <div class=" flex flex-col  gap-5 sm:gap-10   pt-6 pb-3 sm:pt-12 sm:pb-6">
+            <div class=" flex  justify-center  ">
+                <div class="flex  flex-col sm:flex-row items-center justify-start sm:justify-center lg:justify-start gap-2.5  w-[1200px]">
+                    <div>
+                    <img width="50" height="50" src="https://img.icons8.com/scribby/50/star.png" alt="star" />
+                    </div>
+                    <div class=" font-bold text-xl sm:text-2xl flex gap-3">
+                        <p>Github Rating : </p>
+                        <p>{{roast["rating"]}}/10</p>
+                    </div>
+                </div>
+            </div>
+            <div class=" flex  justify-center">
+                <div class="flex  flex-col sm:flex-row items-center justify-start sm:justify-center lg:justify-start gap-2.5  w-[1200px]">
+                    <div>
+                    <img width="50" height="50" class=" lg:w-[60px] lg:h-[50px] " src="https://img.icons8.com/matisse/50/fire-element.png" alt="fire-element" />
+                    </div>
+                    <div class=" w-full max-w-[1000pxn]" >
+                        <p class=" font-semibold sm:text-xl text-fontPrimary text-center lg:text-start">{{roast["roast"]}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class=" flex  justify-center ">
+                <div class="flex flex-col lg:flex-row items-center lg:items-start justify-start gap-2.5  w-[1200px]">
+                    <div>
+                    <img width="50" height="50" src="https://img.icons8.com/papercut/50/ok.png" alt="ok" class=" sm:w-[50px] sm:h-[50px]"/>
+                    </div>
+                    <div class=" flex flex-col gap-1.5 mt-1.5 sm:mt-2.5 text-center lg:text-start">
+                        <p class=" font-bold text-fontPrimary text-xl sm:text-2xl ">Good Things</p>
+                        <div class=" flex flex-col gap-2">
+                            {% for thing in roast["good_things"] %}
+                                <div class=" flex items-center gap-3">
+                                    <div class=" hidden lg:block">
+                                        <div class="w-[10px] h-[10px] bg-[#D9D9D9] rounded-full"></div>
+                                    </div>
+                                    <div>
+                                        <p class=" text-fontPrimary sm:text-xl opacity-50">{{thing}}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" flex  justify-center">
+                <div class="flex flex-col lg:flex-row items-center lg:items-start justify-start gap-2.5  w-[1200px] text-center lg:text-start">
+                    <div>
+                    <img width="50" height="50" src="https://img.icons8.com/color/50/thumbs-down.png" alt="thumbs-down" class=" sm:w-[50px] sm:h-[50px]"/>
+                    </div>
+                    <div class="  flex flex-col gap-1.5 mt-0.5 sm:mt-1.5 ">
+                        <p class=" font-bold text-fontPrimary text-xl sm:text-2xl ">Bad Things</p>
+                        <div class=" flex flex-col gap-2">
+                            {% for thing in roast["missing_or_bad"] %}
+                                <div class=" flex items-center gap-3">
+                                    <div class=" hidden lg:block">
+                                        <div class="w-[10px] h-[10px] bg-[#D9D9D9] rounded-full"></div>
+                                    </div>
+                                    <div>
+                                        <p class=" text-fontPrimary sm:text-xl opacity-50">{{thing}}</p>
+                                    </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" flex  justify-center ">
+                <div class="flex flex-col lg:flex-row items-center lg:items-start justify-start gap-2.5  w-[1200px] text-center lg:text-start">
+                    <div>
+                    <img width="50" height="50" src="https://img.icons8.com/external-flaticons-flat-flat-icons/50/external-recruiter-recruitment-agency-flaticons-flat-flat-icons-4.png" alt="external-recruiter-recruitment-agency-flaticons-flat-flat-icons-4" class=" sm:w-[50px] sm:h-[50px]"/>
+                    </div>
+                    <div class="  flex flex-col gap-1.5 mt-1.5 ">
+                        <p class=" font-bold text-fontPrimary text-xl sm:text-2xl ">Impression</p>
+                        <div class=" flex flex-col gap-2">
+                            <div class=" flex items-center gap-3">
+                                <p class=" text-fontPrimary sm:text-xl font-semibold">{{roast["recruiter_impression"]}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" w-full flex justify-center">
+            <div class=" border-2  border-fontPrimary  opacity-10 rounded-full w-[1200px] "></div>
+        </div>
+        <div class="  pt-6 sm:pt-12">
+            <div class=" flex  justify-center ">
+                <div class="flex flex-col lg:flex-row items-center lg:items-start justify-start gap-1.5 sm:gap-2.5  w-[1200px] text-center lg:text-start">
+
+                    <div class=" flex flex-col gap-3 mt-1.5 sm:mt-2.5 ">
+                        <p class=" font-bold text-fontPrimary text-xl sm:text-2xl ">Top repos according to our score</p>
+                        <div class=" flex flex-col gap-4 ">
+                            {% if repos %}
+                                {% for repo in repos %}
+                                    <div class=" flex flex-col lg:flex-row items-center lg:items-start flex-wrap gap-1.5 lg:gap-3 ">
+                                        <div class="w-[30px] h-[30px] sm:w-[50px] sm:h-[50px] flex-shrink-0" >
+                                            <img  src="https://img.icons8.com/dotty/50/repository.png" alt="repository" class="w-full h-full object-contain"/>
+                                        </div>
+                                        <div>
+                                            <p class=" text-fontPrimary font-semibold text-xl">{{repo.name}}</p>
+                                            <p class=" text-fontPrimary text-[16px] opacity-50">{{repo.description}}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <p class=" text-fontPrimary text-bold text-xl">No repos added.</p>
+                            {% endif %}
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" py-7">
+        <div>
+            <p class=" font-Roboto text-fontPrimary text-center">"© 2025 Yuv Bhatt. All rights reserved." </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
