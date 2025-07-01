@@ -1,11 +1,11 @@
 # 🔥 RoastHub — Roast Your GitHub with AI
 
-![Fantasy Flick Banner](images/banner.png)
+![RoastHub Banner](images/banner.png)
 
 Ever wondered what an AI recruiter *really* thinks of your GitHub profile?  
 **RoastHub** analyzes your public repos, picks your top 10 projects, and generates a brutal (but constructive) roast — powered by open-source LLMs.
 
-🟢 **Live Site:** [https://fantasyflick-05af.onrender.com/](https://fantasyflick-05af.onrender.com/)
+🟢 **Live Site:** [https://roasthub-snc1.onrender.com/](https://roasthub-snc1.onrender.com/)
 🚀 **Hosted on:** [Render](https://render.com)  
 ⚠️ *Note: App is hosted on Render’s free tier. It may take 20–30 seconds to load if inactive.*
 
@@ -33,17 +33,7 @@ Ever wondered what an AI recruiter *really* thinks of your GitHub profile?
 ![Signup](images/roast.png)
 
 **🪦💀 User Not Found Page**  
-![Login](images/user-not-found.png)
-
-
-
----
-
-## 🎥 Demo
-
-Check out a walkthrough of the app here:  
-[![Fantasy Flick Demo](https://img.youtube.com/vi/Kg5U-_UmpaQ/0.jpg)](https://www.youtube.com/watch?v=Kg5U-_UmpaQ)
-
+![User Not Found](images/user-not-found.png)
 
 ---
 

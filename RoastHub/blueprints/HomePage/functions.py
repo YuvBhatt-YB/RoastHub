@@ -62,7 +62,29 @@ def get_repos_stats(username):
     return {"repos":repos,"prompt_two":prompt_two}
 
 def build_prompt(prompt_1,prompt_2):
-    remaining = """\nNow:\n1. Give a github account rating out of 10\n2. Roast it in a witty way\n3. Point out good things\n4. Point out what’s missing or bad\n5. Write a “recruiter’s impression” in 1 sentence\nGive all answer in json format\nMake sure the json keys are as follows:"rating" github rating,"roast" actual roast,"good_things" which is a list of good things ,"missing_or_bad" which is a list of bad things,"recruiter_impression"\nmake sure to strictly follow the format"""
+    remaining = """
+You are an expert GitHub reviewer.
+
+Your task is to:
+1. Give a GitHub account rating out of 10
+2. Roast it in a witty way
+3. Point out good things
+4. Point out what’s missing or bad
+5. Write a one-sentence recruiter impression
+
+Respond ONLY in the following **valid JSON** format:
+
+{
+  "rating": <number>,
+  "roast": "<string>",
+  "good_things": ["<string>", "<string>"],
+  "missing_or_bad": ["<string>", "<string>"],
+  "recruiter_impression": "<string>"
+}
+
+DO NOT include any explanation or text outside the JSON.
+Strictly follow this structure.
+"""
     result_prompt = prompt_1 + prompt_2 + remaining
     return result_prompt
 
